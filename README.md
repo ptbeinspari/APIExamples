@@ -9,11 +9,15 @@ This implementation provides:
 6. Proper error handling and retry mechanisms
 7. Rate limiting and pagination implementations
 
+
+## Setup
+pip install -r requirements.txt
+
 All tests can be run with:
 ```bash
-pip install -r requirements.txt
 pytest -v
 ```
+All exmples found in examples folder, all tests are found in test folder.
 
 ## Usage Examples
 Found in demo.py
