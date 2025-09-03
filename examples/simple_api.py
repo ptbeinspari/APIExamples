@@ -16,26 +16,3 @@ async def post(url: str, payload: dict, save_as: str) -> any:
             data = await response.json()
             save_json(data, "simple_api", save_as)
             return data
-        
-
-
-
-
-
-
-#For comparison
-# import requests
-# from .utils import save_json
-
-# def get(url: str, save_as: str) -> any:
-#     response = requests.get(url)
-#     response.raise_for_status()
-#     data = response.json()
-#     save_json(data, "simple_api", save_as)
-#     return data
-
-
-
-
-
-    

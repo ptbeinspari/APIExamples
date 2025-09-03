@@ -7,29 +7,31 @@ if __name__ == "__main__":
     print("Running demos ------------------------------")
 
 
-
-
-    # # Example usage - Simple Api
+    # Example usage - Simple Api
+    # ---------------------------------------------------------------
+    print("Running simple_api demo ----------- Started - GET")
+    get_url = "https://pokeapi.co/api/v2/pokemon"
+    getresult = asyncio.run(simple_api.get(get_url, "simple_get_result.json"))
+    print("Running simple_api demo ----------- GET completed - saved to simple_get_result.json")
+    
+    print("Running simple_api demo ----------- Started - POST")
+    post_url = "https://jsonplaceholder.typicode.com/posts"
+    post_body = {
+                    "name": "bulbasaur",
+                    "type": "grass"
+                }
+    postresult = asyncio.run(simple_api.post(post_url, post_body, "simple_post_result.json"))
+    print("Running simple_api demo ----------- POST completed - saved to simple_post_result.json")
     # # ---------------------------------------------------------------
-    # print("Running simple_api demo ----------- Started")
-    # get_url = "https://pokeapi.co/api/v2/pokemon"
-    # getresult = asyncio.run(simple_api.get(get_url, "simple_get_result.json"))
-    # print("Running simple_api demo ----------- GET completed - saved to simple_get_result.json")
-    
-    # post_url = "https://jsonplaceholder.typicode.com/posts"
-    # post_body = {
-    #     "title": "foo", 
-    #     "body": "bar", 
-    #     "userId": 1
-    #     }
-    # postresult = asyncio.run(simple_api.post(post_url, post_body, "simple_post_result.json"))
-    # print("Running simple_api demo ----------- POST completed - saved to simple_post_result.json")
-    # # # ---------------------------------------------------------------
-
-    
 
 
 
+    # # Example usage - Pagination
+    # # ---------------------------------------------------------------
+    # print("Running pagination demo ----------- Started")
+    # asyncio.run(pagination.fetch_paginated("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"))
+    # print("Running pagination demo ----------- Completed - all pages combined in one file")
+    # # --------------------------------------------------------------- 
 
 
 
@@ -47,10 +49,6 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
     # # Example usage - Rate Limiting
     # # ---------------------------------------------------------------
     # print("Running rate_limiting demo ----------- (2 requests/s)...")
@@ -60,25 +58,6 @@ if __name__ == "__main__":
     # asyncio.run(rate_limiting.rate_limited_calls(urls, rate_calls_per_sec))
     # print(f"Running rate_limiting demo ----------- saved {len(urls)} files")
     # # ---------------------------------------------------------------
-
-
-
-
-
-
-
-
-    # # Example usage - Pagination
-    # # ---------------------------------------------------------------
-    # print("Running pagination demo ----------- Started")
-    # asyncio.run(pagination.fetch_paginated("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"))
-    # print("Running pagination demo ----------- Completed - all pages combined in one file")
-    # # ---------------------------------------------------------------
-
-
-
-
-
 
 
 
@@ -99,12 +78,6 @@ if __name__ == "__main__":
     # except Exception as e:
     #     print(f"Running error_handling demo ----------- Completed with expected error after retries: {str(e.__class__)}")
     # # ---------------------------------------------------------------
-
-
-
-
-
-
 
 
 

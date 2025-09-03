@@ -16,6 +16,5 @@ async def batch_fetch_ids(base_url: str, ids: list) -> any:
     async with aiohttp.ClientSession() as session:
         tasks = [fetch_json_and_save(session, base_url, id) for id in ids]
         results = await asyncio.gather(*tasks)
-        
         return results
                 

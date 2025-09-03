@@ -7,7 +7,7 @@ async def rate_limited_calls(urls: list, calls_per_second: int) -> None:
     
     async def rate_limited_fetch(session, url, i):
         async with semaphore:
-            await asyncio.sleep(1/calls_per_second)  # Spread requests
+            await asyncio.sleep(1.0/calls_per_second)  # Spread out requests
             async with session.get(url) as response:
                 response.raise_for_status()
                 data = await response.json()

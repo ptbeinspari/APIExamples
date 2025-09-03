@@ -2,8 +2,6 @@ import aiohttp, asyncio
 from .utils import save_json
 
 
-# If API has "next" implemented, async calls will function like sync. If API has "pages" we can construct list
-# of URLS and call async, with high concurrency!
 
 async def fetch_paginated(url: str) -> any:
     all_results = []
