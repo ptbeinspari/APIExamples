@@ -6,14 +6,15 @@ import aiohttp, asyncio
 
 @pytest.mark.asyncio
 async def test_get_endpoint():
-    # Mock response data
-    mock_response_data = {"count": 1302}
+    # Test against real API - check for at least the original count
     get_url = "https://pokeapi.co/api/v2/pokemon"
     test_file = "test_simple_get_result.json"
 
     result = await simple_api.get(get_url, test_file)
 
-    assert result.get("count") == mock_response_data.get("count")
+    # Data grows over time, so check for at least the original count
+    assert result.get("count") >= 1302
+    assert "results" in result
 
 @pytest.mark.asyncio
 async def test_post_endpoint():

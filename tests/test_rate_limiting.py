@@ -1,14 +1,15 @@
 import pytest
 import asyncio
-from unittest.mock import patch, AsyncMock
+from unittest.mock import patch, AsyncMock, Mock
 from examples import rate_limiting
 
 @pytest.mark.asyncio
 @patch('aiohttp.ClientSession.get')
 @patch('asyncio.sleep', new_callable=AsyncMock)
 async def test_rate_limiting(mock_sleep, mock_get):
-    mock_resp = AsyncMock()
-    mock_resp.json.return_value = {'id': 1}
+    mock_resp = Mock()
+    mock_resp.raise_for_status = Mock()
+    mock_resp.json = AsyncMock(return_value={'id': 1})
     mock_get.return_value.__aenter__.return_value = mock_resp
 
     rate_calls_per_sec = 5 
